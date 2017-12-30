@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QObject>
 #include <ServerInfo/serverinfo.h>
+#include <Config/config.h>
 
 class Manager : public QObject{
     Q_OBJECT
@@ -14,6 +15,7 @@ private slots:
     void start();
 private:
     ServerInfo* serverInfo;
+    Config* config;
 };
 
 #endif // MANAGER_H

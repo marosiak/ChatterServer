@@ -18,9 +18,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     Manager/manager.cpp \
     ServerInfo/serverinfo.cpp \
-    Config/config.cpp
+    Config/config.cpp \
+    Network/UdpListener/udplistener.cpp
 
 HEADERS += \
     Manager/manager.h \
     ServerInfo/serverinfo.h \
-    Config/config.h
+    Config/config.h \
+    Network/UdpListener/udplistener.h

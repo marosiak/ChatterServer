@@ -9,20 +9,34 @@ Config::Config(QObject *parent) : QObject(parent){
         configFile->open(QIODevice::ReadWrite);
         // load from template
         QTextStream stream(configFile);
-        stream << "{\n"
-                  "\"port\":\"3110\",\n\r"
-                  "\"timeout\": \"5\",\n\r"
-                  "\"maxSearchResults\":\"20\"\n\r"
-                  "}";
+        stream << QString("{\n"
+                  "\"port\":\"%1\",\n\r"
+                  "\"timeout\": \"%2\",\n\r"
+                  "\"maxSearchResults\":\"%3\"\n\r"
+                  "}").arg(def.port).arg(def.timeout).arg(def.maxSearchResults);
         configFile->close();
     }
 
     configFile->open(QIODevice::ReadWrite);
     // read props
     QJsonDocument doc = QJsonDocument::fromJson(QString(configFile->readAll()).toUtf8());
-    setPort(doc.object().value("port").toString().toInt());
-    setTimeout(doc.object().value("timeout").toString().toInt());
-    setMaxSearchResults(doc.object().value("maxSearchResults").toString().toInt());
+    QJsonValue port = doc.object().value("port");
+    QJsonValue timeout = doc.object().value("timeout");
+    QJsonValue maxSearchResults = doc.object().value("maxSearchResults");
+    if(port.isUndefined()){
+        setPort(def.port);
+        qDebug() << "[Alert] Cannot load \"port\" value from config.cfg, the value has been set to default value"<<def.port;
+    } else {setPort(port.toString().toInt());}
+
+    if(timeout.isUndefined()){
+        setTimeout(def.timeout);
+        qDebug() << "[Alert] Cannot load \"timeout\" value from config.cfg, the value has been set to default value"<<def.timeout;
+    } else {setTimeout(timeout.toString().toInt());}
+
+    if(maxSearchResults.isUndefined()){
+        setMaxSearchResults(def.maxSearchResults);
+        qDebug() << "[Alert] Cannot load \"maxSearchResults\" value from config.cfg, the value has been set to default value"<<def.maxSearchResults;
+    } else {setMaxSearchResults(maxSearchResults.toString().toInt());}
     configFile->close();
 }
 

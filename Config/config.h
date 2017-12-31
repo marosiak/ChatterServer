@@ -9,6 +9,12 @@
 #include <QJsonDocument>
 #include <QJsonValue>
 
+struct Default {
+    int port = 3110;
+    int timeout = 5;
+    int maxSearchResults = 20;
+};
+
 class Config : public QObject{
     Q_OBJECT
 public:
@@ -22,6 +28,8 @@ public:
 
     int maxSearchResults() const;
     void setMaxSearchResults(int maxSearchResults);
+
+    Default def;
 
 signals:
 

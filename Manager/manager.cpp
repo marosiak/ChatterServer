@@ -17,10 +17,10 @@ void Manager::reciveMessage(QHostAddress senderIp, int senderPort, QString messa
     qDebug() << senderIp.toString()<<"@"<<senderPort<<" says: "<<message;
     JsonReader json(message);
 
-//    sender->send(senderIp,senderPort, "something..");
+    sender->send(senderIp,senderPort, "something..");
     if(json.getType() == "login"){
         if(json.getSize() == 2){
-//            sender->send(senderIp,senderPort, "GOOD LOGIN");
+            sender->send(senderIp,senderPort, "GOOD LOGIN");
         } else {
             // bad argument
         }

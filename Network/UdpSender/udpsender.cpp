@@ -1,8 +1,7 @@
 #include "udpsender.h"
 
-UdpSender::UdpSender()
-{
-
+UdpSender::UdpSender(){
+    socket = new QUdpSocket;
 }
 
 void UdpSender::send(QHostAddress ip, quint32 port, QString message){

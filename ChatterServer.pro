@@ -19,10 +19,16 @@ SOURCES += main.cpp \
     Manager/manager.cpp \
     ServerInfo/serverinfo.cpp \
     Config/config.cpp \
-    Network/UdpListener/udplistener.cpp
+    Network/UdpListener/udplistener.cpp \
+    Json/JsonReader/jsonreader.cpp \
+    Network/UdpSender/udpsender.cpp \
+    Json/JsonGenerator/jsongenerator.cpp
 
 HEADERS += \
     Manager/manager.h \
     ServerInfo/serverinfo.h \
     Config/config.h \
-    Network/UdpListener/udplistener.h
+    Network/UdpListener/udplistener.h \
+    Json/JsonReader/jsonreader.h \
+    Network/UdpSender/udpsender.h \
+    Json/JsonGenerator/jsongenerator.h

@@ -6,6 +6,9 @@
 #include <ServerInfo/serverinfo.h>
 #include <Config/config.h>
 #include <Network/UdpListener/udplistener.h>
+#include <Network/UdpSender/udpsender.h>
+#include <Json/JsonReader/jsonreader.h>
+#include <Json/JsonGenerator/jsongenerator.h>
 
 class Manager : public QObject{
     Q_OBJECT
@@ -19,6 +22,7 @@ private:
     ServerInfo* serverInfo;
     Config* config;
     UdpListener* listener;
+    UdpSender* sender;
 };
 
 #endif // MANAGER_H
